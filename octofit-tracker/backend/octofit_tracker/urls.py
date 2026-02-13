@@ -40,6 +40,7 @@ def api_root(request, format=None):
         base_url = "http://localhost:8000"
     
     return Response({
+        'admin': base_url + '/admin/',
         'users': base_url + '/api/users/',
         'teams': base_url + '/api/teams/',
         'activities': base_url + '/api/activities/',
