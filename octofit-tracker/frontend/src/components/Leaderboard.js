@@ -9,11 +9,10 @@ function Leaderboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const baseUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api`;
-        
         // Fetch leaderboard data
-        console.log('Fetching leaderboard from:', `${baseUrl}/leaderboard/`);
-        const leaderboardResponse = await fetch(`${baseUrl}/leaderboard/`);
+        const leaderboardUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`;
+        console.log('Fetching leaderboard from:', leaderboardUrl);
+        const leaderboardResponse = await fetch(leaderboardUrl);
         if (!leaderboardResponse.ok) {
           throw new Error(`HTTP error! status: ${leaderboardResponse.status}`);
         }
@@ -21,8 +20,9 @@ function Leaderboard() {
         const leaderboardArray = leaderboardData.results || leaderboardData;
         
         // Fetch users data
-        console.log('Fetching users from:', `${baseUrl}/users/`);
-        const usersResponse = await fetch(`${baseUrl}/users/`);
+        const usersUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`;
+        console.log('Fetching users from:', usersUrl);
+        const usersResponse = await fetch(usersUrl);
         if (!usersResponse.ok) {
           throw new Error(`HTTP error! status: ${usersResponse.status}`);
         }
